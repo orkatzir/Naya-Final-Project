@@ -2,11 +2,12 @@ from pymongo import MongoClient
 from datetime import datetime
 import math
 
-cluster=MongoClient("mongodb+srv://ork:12345@cluster0.e0w4mmx.mongodb.net/")
+cluster=MongoClient("mongodb+srv://ork:****@cluster0.e0w4mmx.mongodb.net/")
 stock_db=cluster["Real-Time-Inventory"]["stock"]
 supply_db=cluster["Real-Time-Inventory"]["supply"]
 cursor = supply_db.find({})
 date_today=datetime.now().strftime('%Y-%m-%d')
+
 for document in cursor:
     if document['date_of_supply']==date_today and document["is_done"]==False:
         item_s=stock_db.find_one({"pn":document['pn']})

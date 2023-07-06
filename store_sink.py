@@ -9,7 +9,7 @@ date_today=datetime.now().strftime("%Y-%m-%d")
 
 TOPIC_NAME='store_topic'
 KAFKA_SERVER='cnt7-naya-cdh63:9092'
-cluster=MongoClient("mongodb+srv://ork:12345@cluster0.e0w4mmx.mongodb.net/")
+cluster=MongoClient("mongodb+srv://ork:*****@cluster0.e0w4mmx.mongodb.net/")
 stock_db=cluster["Real-Time-Inventory"]["stock"]
 history_db=cluster["Real-Time-Inventory"]["transactions"]
 consumer = KafkaConsumer(TOPIC_NAME,bootstrap_servers=KAFKA_SERVER,auto_offset_reset='latest',

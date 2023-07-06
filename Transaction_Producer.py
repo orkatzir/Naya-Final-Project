@@ -5,7 +5,7 @@ from kafka import KafkaProducer
 from json import loads,dumps
 from pymongo import MongoClient
 import pandas as pd
-cluster=MongoClient("mongodb+srv://ork:12345@cluster0.e0w4mmx.mongodb.net/")
+cluster=MongoClient("mongodb+srv://ork:*****@cluster0.e0w4mmx.mongodb.net/")
 stock_db=cluster["Real-Time-Inventory"]["stock"]
 history_db=cluster["Real-Time-Inventory"]["transactions"]
     
@@ -21,7 +21,7 @@ def send_transactions(topic_name):
            item_qty=1
        else:
           item_qty=random.randint(1,3)
-       date=datetime.now().strftime("%Y-06-"+str(i)+" %H:%M:%S")    
+       date=datetime.now().strftime("%Y-%m-"+str(i)+" %H:%M:%S")    
        val={"trans_pn":row['pn'],"trans_product_name":row['product_line_item'],"trans_datetime":date,"trans_qty":item_qty}    
        print(val)  
        producer.send(topic_name,value=val)       
